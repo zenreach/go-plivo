@@ -52,7 +52,9 @@ func NewClient(client *http.Client, authID, authToken string) *Client {
 	return NewClientWithHost(client, authID, authToken, defaultHost, defaultScheme)
 }
 
-// NewClientWithHost returns a new Plivo API client with specified host.
+// NewClientWithHost returns a new Plivo API client with specified host and scheme.
+// host is the hostname without a defined scheme or endpoint
+// scheme is either 'http' or 'https'
 func NewClientWithHost(client *http.Client, authID, authToken, host, scheme string) *Client {
 	baseURL, _ := url.Parse(fmt.Sprintf(defaultBaseURL, scheme, host, apiVersion))
 
